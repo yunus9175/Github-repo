@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import { Typography, Box } from '@mui/material';
+import React, { Suspense } from 'react';
+import Route from 'routes';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+  const loading = () => {
+    return (
+      <>
+        <Box
+          sx={{
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Typography variant="h3" component="h3">
+            Loading...
+          </Typography>
+        </Box>
+      </>
+    );
+  };
+  return (
+    <>
+      <Suspense fallback={loading}></Suspense>
+      <Route />
+    </>
   );
 }
 
